@@ -1,0 +1,133 @@
+body {
+  font-size: 25px;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background-image: url(/grass.jpg);
+  /* cursor: url(/mallet1.png), auto; */
+}
+
+/* title of  game */
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 40pt;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(212, 221, 35);
+}
+
+.title {
+  font-family: "Courier New", Courier, monospace;
+  justify-content: center;
+  padding-bottom: 0;
+}
+
+#start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+.button-6:hover,
+.button-6:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+.button-6:hover {
+  transform: translateY(-1px);
+}
+.button-6:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+/* Scorekeeper */
+.score {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+  border-radius: 1%;
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 40pt;
+  font-weight: bold;
+  color: white;
+  /* webkit text stroke adds a border around the score font */
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+
+
+#playAgain {
+  display: flex;
+  justify-content: center;
+}
+
+/* styling the grid divs as mole holes */
+.moleGrid {
+  display: grid;
+  grid-template-columns: 105px 105px 105px;
+  grid-template-rows: 105px 105px 105px;
+  grid-gap: 40px;
+  justify-content: center;
+  cursor: url(/mallet1.png), auto;
+
+}
+
+/* I couldn't figure out how to create the shadows on the mole hills so I used some of the code on the youtube video that I gave credit to */
+.hole {
+  padding: 10px;
+  border-radius: 50%; /*this makes the divs circles*/
+  position: relative; /*to keep the mole hill in its relative place*/
+  overflow: hidden; /*this will hide the overflow of the mole when going back into molehill*/
+  box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+    inset 0 20px 20px 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgb(165, 85, 11);
+}
+
+
+
+.mole {
+    background-image: url(mole.png);
+    position: absolute;
+    left: 102px;
+    top: 5px;
+    width: 300%;
+    z-index: -1;
+}
