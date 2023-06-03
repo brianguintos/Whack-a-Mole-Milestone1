@@ -24,7 +24,6 @@ body {
 #start {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
@@ -33,23 +32,16 @@ body {
   color: rgba(0, 0, 0, 0.85);
   cursor: pointer;
   display: flex;
-  /* justify-content: center*/
   font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  /* justify-content: center; */
   line-height: 1.25;
-  margin: 0;
+  /* margin: 0;
   min-height: 3rem;
   padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
-  /* text-decoration: none; */
   transition: all 250ms;
-  user-select: none;
-  /* -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto; */
+  user-select: none; */
 }
 .button-6:hover,
 .button-6:focus {
@@ -79,7 +71,6 @@ body {
   font-size: 40pt;
   font-weight: bold;
   color: white;
-  /* webkit text stroke adds a border around the score font */
 }
 
 /* to edit "remaining time" */
@@ -104,10 +95,10 @@ p {
   cursor: url(/mallet1.png), auto;
 }
 
-/* I couldn't figure out how to create the shadows on the mole hills so I used some of the code on the youtube video that I gave credit to */
+/* Styling the mole holes */
 .hole {
   padding: 10px;
-  border-radius: 50%; /*this makes the divs circles*/
+  border-radius: 50%; /*this turns the div squares into circles*/
   position: relative; /*to keep the mole hill in its relative place*/
   overflow: hidden; /*this will hide the overflow of the mole when going back into molehill*/
   box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
@@ -115,14 +106,19 @@ p {
   background-color: rgb(165, 85, 11);
 }
 
-.moleGrid .hole .moles{
+/* Styling the mole images */
+.hole .moles {
   width: 100%;
   height: 100%;
   object-fit: cover;
   position: absolute;
-  left: 5%;
-  margin-bottom: 38%;
-  transform: translateY(50%);
-  bottom: 0;
-  overflow: hidden;
+  top: 0;
+  left: 0;
+  opacity: 0; /* initially hidden */
+  transition: opacity 0.3s ease-in-out; /* effect to ease in and out */
+}
+
+/* Add the 'active' class to make the mole visible */
+.hole.active .moles {
+  opacity: 100;
 }
