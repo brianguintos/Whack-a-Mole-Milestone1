@@ -1,58 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script
-      src="https://code.jquery.com/jquery-3.7.0.slim.min.js"
-      integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE="
-      crossorigin="anonymous"
-    ></script>
-    <title>Whack-a-Mole!</title>
-  </head>
-  <body>
-    <h1 class="title">Whack-a-Mole!</h1>
-    <!-- Scorekeeper -->
-    <h2 class="score">0</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
+  <title>Whack-a-Mole!</title>
+</head>
+<body>
+  <h1 class="title">Whack-a-Mole!</h1>
+  <!-- Scorekeeper -->
+  <h2 class="score">00</h2>
 
-    <p>Remaining Time: <span id="timer">0</span></p>
-    <button id="start" onclick="start()">Start!</button>
-    <!-- <button id="playAgain">Play Again</button> -->
+  <p>Remaining Time: <span id="timer">0</span></p>
+  <nav class="nav">
+    <Ul>
+      <li>
+        <button id="start">Start!</button>
+      </li>
+      <li>
+        <button id="playAgain">Play Again</button>
+      </li>
+    </Ul>
+  </nav>
+  <!-- Grid for 9 moles -->
+  <section class="moleGrid">
+    <div class="hole hole1">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole2">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole3">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole4">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole5">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole6">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole7">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole8">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+    <div class="hole hole9">
+      <img src="moledirt3.png" alt="pictureMole" class="moles" />
+    </div>
+  </section>
 
-    
-    <!-- Grid for 9 moles -->
-    <section class="moleGrid">
-      <div class="hole hole1">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole2">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole3">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole4">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole5">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole6">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole7">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole8">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-      <div class="hole hole9">
-        <img src="moledirt3.png" alt="pictureMole" class="moles">
-      </div>
-    </section>
-<!-- added the script tag down here because I kept getting an error when I inspected the page that said 'start' was not a function and found online that I should move it out of the head to the body; it worked, no more errors-->
-    <script src="script.js"></script>
-  </body>
+  <script>
+    // JavaScript code
+    $(document).ready(function () {
+      var timer;
+      var timeLeft = 60;
+      let score = 0; // Variable to store the score
+
+      function gameOver() {
+        clearInterval(timer);
+        updateTimer();
+        $("#playAgain").show();
+      }
+
+      function updateTimer() {
+        timeLeft = timeLeft - 1;
+        if (timeLeft >= 0) {
+          console.log(timeLeft);
+          $("#timer").html(timeLeft);
+        } else {
+          gameOver();
+        }
+      }
+
+      function start() {
+        timer = setInterval(updateTimer, 1000);
+        $("#playAgain").hide();
+        resetScore(); // Initialize the score to 0
+        intervalId = setInterval(showMole, 2000);
+      }
+
+      const moleElements = $(".moles");
+
+      function handleWhack() {
+        const moleHole = $(this).parent();
+        if (moleHole.hasClass("active")) {
+          moleHole.removeClass("active");
+          incrementScore(); // Increment the score when a mole is whacked
+        }
+      }
+
+      function incrementScore() {
+        score += 1; // Increment the score by 1
+        updateScoreDisplay(); // Update the score display
+      }
+
+      function updateScoreDisplay() {
+        const scoreElement = $(".score");
+        scoreElement.text(score.toString().padStart(2, "0")); // Update the score text
+      }
+
+      function resetScore() {
+        score = 0; // Reset the score to 0
+        updateScoreDisplay(); // Update the score display
+      }
+
+      moleElements.on("click", handleWhack);
+
+      let activeMole = null;
+
+      function showMole() {
+        const randomMoleIndex = Math.floor(
+          Math.random() * moleElements.length
+        );
+        const moleElement = moleElements.eq(randomMoleIndex).parent();
+
+        if (activeMole) {
+          activeMole.removeClass("active");
+        }
+
+        moleElement.addClass("active");
+        activeMole = moleElement;
+
+        setTimeout(function () {
+          moleElement.removeClass("active");
+        }, 1000);
+      }
+
+      let intervalId;
+
+      $("#start").on("click", start);
+    });
+  </script>
+</body>
 </html>
