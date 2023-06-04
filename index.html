@@ -15,7 +15,7 @@
   <body>
     <h1 class="title">Whack-a-Mole!</h1>
     <!-- Scorekeeper -->
-    <h2 class="score">00</h2>
+    <h2 class="score">0</h2>
 
     <p>Remaining Time: <span id="timer">0</span></p>
     <button id="start" onclick="start()">Start!</button>
@@ -52,7 +52,7 @@
         <img src="moledirt3.png" alt="pictureMole" class="moles">
       </div>
     </section>
-
+<!-- added the script tag down here because I kept getting an error when I inspected the page that said 'start' was not a function and found online that I should move it out of the head to the body; it worked, no more errors-->
     <script src="script.js"></script>
   </body>
 </html>

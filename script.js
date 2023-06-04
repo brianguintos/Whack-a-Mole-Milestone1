@@ -3,24 +3,26 @@ var timeLeft = 60;
 
 //clears the timer when game is over
 function gameOver() {
-  clearInterval(timer);
+  // clearInterval(timer);
+  updateTimer();
   $("#playAgain").show();
 }
 
-//updates timer that starts at 60seconds
+//updates timer that starts at 60seconds; still having trouble with timer decreasing in increments of 2
 function updateTimer() {
   timeLeft = timeLeft -1;
   if (timeLeft >= 0) {
     console.log(timeLeft);
     $("#timer").html(timeLeft);
-  } else {
+  } 
+  else {
     gameOver();
   }
 }
 
 function start() {
   timer = setInterval(updateTimer, 1000);
-  updateTimer();
+  // updateTimer();
   $("#playAgain").hide();
   startGame(); //calling function to start
 }
@@ -52,9 +54,9 @@ moleElements.forEach((moleELement) => {
   moleELement.addEventListener('click', handleWhack);
 });
 
-//this makes the moles pop out of random moles and then hide. Problem right now is I have multiple of them coming out at the same time.
 let activeMole = null;
 
+//this makes the moles pop out of random moles and then hide. Problem right now is I have multiple of them coming out at the same time.
 function showMole() {
   const randomMoleIndex = Math.floor(Math.random() * moleElements.length);
   const moleELement = moleElements[randomMoleIndex].parentNode;
@@ -73,17 +75,13 @@ function showMole() {
 
 let intervalId;
 
-// function startGame() {
-//   resetScore();
-//   intervalId = setInterval(showMole, 2000);
-// }
-
 function resetScore() {
   const scoreElement = document.querySelector('.score');
   let currentScore = parseInt(scoreElement.textContent);
-  currentScore++;
 
-  scoreElement.textContent = currentScore.toString().padStart(0, '00');
+  currentScore++; 
+  scoreElement.textContent = currentScore.toString().padStart(0, '0');
+
 }
 
 //to make whole game start
