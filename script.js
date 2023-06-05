@@ -65,5 +65,5 @@ $(document).ready(function () {
     scoreElement.text(currentScore.toString().padStart(0, '0'));
   }
 
-  $("#start").on("click", start);
+  $(".start").on("click", start);
 });

@@ -20,12 +20,12 @@ body {
   color: rgb(212, 221, 35);
 }
 
-/* start button editing */
+/* start button editing
 .start {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
 /* Scorekeeper */
 .score {
@@ -49,13 +49,19 @@ p, .timer {
   color:rgb(212, 221, 35);
 }
 
-button {
+/* button {
   display:inline-flex;
   justify-content: center;
-}
+} */
 
+/* new class to edit both buttons at same time */
 #nav {
   list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+  justify-content: center;
 }
 
 
