@@ -20,12 +20,6 @@ body {
   color: rgb(212, 221, 35);
 }
 
-/* start button editing
-.start {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 /* Scorekeeper */
 .score {
@@ -40,6 +34,7 @@ body {
   color: white;
 }
 
+
 /* to edit "remaining time" */
 p, .timer {
   display: flex;
@@ -49,25 +44,18 @@ p, .timer {
   color:rgb(212, 221, 35);
 }
 
-/* button {
-  display:inline-flex;
-  justify-content: center;
-} */
 
 /* new class to edit both buttons at same time */
-#nav {
-  list-style-type: none;
+.button {
+  justify-content: center;
+  display: inline-flex;
+background-color: rgb(57, 35, 221);
+font-size: large;
+color:antiquewhite;
 }
 
 ul {
   list-style-type: none;
-  justify-content: center;
-}
-
-
-#playAgain {
-  display: flex;
-  justify-content: center;
 }
 
 /* styling the grid divs as mole holes */

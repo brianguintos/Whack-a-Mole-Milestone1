@@ -14,14 +14,13 @@
   <h2 class="score">00</h2>
 
   <p>Remaining Time: <span id="timer">0</span></p>
-  <nav class="nav">
-    <ul>
+   <ul>
       <li>
-        <button id="start">Start!</button>
-        <button id="playAgain">Play Again</button>
+        <button id="start" class="button">Start!</button>
+        <button id="playAgain" class="button">Play Again</button>
       </li>
     </ul>
-  </nav>
+
   <!-- Grid for 9 moles -->
   <section class="moleGrid">
     <div class="hole hole1">
@@ -54,7 +53,7 @@
   </section>
 
   <script>
-    // JavaScript code
+    // JavaScript code wasn't working properly on the .js file until I moved it to the body of HTML
     $(document).ready(function () {
       var timer;
       var timeLeft = 60;
@@ -62,6 +61,7 @@
 
       function gameOver() {
         clearInterval(timer);
+        clearInterval(intervalId);
         updateTimer();
         $("#playAgain").show();
       }
@@ -135,5 +135,6 @@
       $("#start").on("click", start);
     });
   </script>
+
 </body>
 </html>
