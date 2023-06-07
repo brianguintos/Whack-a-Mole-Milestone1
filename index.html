@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<br lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,18 +8,18 @@
   <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js"></script>
   <title>Whack-a-Mole!</title>
 </head>
-<body>
   <h1 class="title">Whack-a-Mole!</h1>
   <!-- Scorekeeper -->
+  <ul>
+    <li>
+      <button id="start" class="button">Start!</button>
+    </li>
+  </ul>
+</div>
   <h2 class="score">00</h2>
 
   <p>Remaining Time: <span id="timer">0</span></p>
-   <ul>
-      <li>
-        <button id="start" class="button">Start!</button>
-        <button id="playAgain" class="button">Play Again</button>
-      </li>
-    </ul>
+
 
   <!-- Grid for 9 moles -->
   <section class="moleGrid">
@@ -51,90 +51,10 @@
       <img src="moledirt3.png" alt="pictureMole" class="moles" />
     </div>
   </section>
-
-  <script>
-    // JavaScript code wasn't working properly on the .js file until I moved it to the body of HTML
-    $(document).ready(function () {
-      var timer;
-      var timeLeft = 60;
-      let score = 0; // Variable to store the score
-
-      function gameOver() {
-        clearInterval(timer);
-        clearInterval(intervalId);
-        updateTimer();
-        $("#playAgain").show();
-      }
-
-      function updateTimer() {
-        timeLeft = timeLeft - 1;
-        if (timeLeft >= 0) {
-          console.log(timeLeft);
-          $("#timer").html(timeLeft);
-        } else {
-          gameOver();
-        }
-      }
-
-      function start() {
-        timer = setInterval(updateTimer, 1000);
-        $("#playAgain").hide();
-        resetScore(); // Initialize the score to 0
-        intervalId = setInterval(showMole, 2000);
-      }
-
-      const moleElements = $(".moles");
-
-      function handleWhack() {
-        const moleHole = $(this).parent();
-        if (moleHole.hasClass("active")) {
-          moleHole.removeClass("active");
-          incrementScore(); // Increment the score when a mole is whacked
-        }
-      }
-
-      function incrementScore() {
-        score += 1; // Increment the score by 1
-        updateScoreDisplay(); // Update the score display
-      }
-
-      function updateScoreDisplay() {
-        const scoreElement = $(".score");
-        scoreElement.text(score.toString().padStart(2, "0")); // Update the score text
-      }
-
-      function resetScore() {
-        score = 0; // Reset the score to 0
-        updateScoreDisplay(); // Update the score display
-      }
-
-      moleElements.on("click", handleWhack);
-
-      let activeMole = null;
-
-      function showMole() {
-        const randomMoleIndex = Math.floor(
-          Math.random() * moleElements.length
-        );
-        const moleElement = moleElements.eq(randomMoleIndex).parent();
-
-        if (activeMole) {
-          activeMole.removeClass("active");
-        }
-
-        moleElement.addClass("active");
-        activeMole = moleElement;
-
-        setTimeout(function () {
-          moleElement.removeClass("active");
-        }, 1000);
-      }
-
-      let intervalId;
-
-      $("#start").on("click", start);
-    });
-  </script>
-
+<script src="script.js"></script> <!--it doesn't work if I put this src code inside of the head-->
+<div class="resources">
+  <a href='https://pngtree.com/so/Stereo'>Stereo png from pngtree.com/</a> <!--givign credit to website I used cursor from-->
+  <a href="https://www.freepik.com/free-vector/seamless-textured-grass-natural-grass-pattern_11930799.htm#query=grass%20background&position=22&from_view=keyword&track=ais">Image by babysofja</a> on Freepik <!--credit for background-->
+</div>
 </body>
 </html>

@@ -1,15 +1,18 @@
 body {
+  margin: 0;
+  padding: 0;
   font-size: 25px;
   width: 100%;
   height: 100vh;
-  margin: 0;
-  background-image: url(/grass.jpg);
+  background-image: url(/greenGrass.jpg);
+  object-fit:scale-down;
+  transform: scale(.75);   /* used this to make everything fit in the page better. Trying to avoid the vertical scroll bar */
 }
 
 /* title of  game */
 .title {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
   justify-content: center;
   padding: 0;
   margin: 0;
@@ -18,20 +21,28 @@ body {
   font-weight: bold;
   text-align: center;
   color: rgb(212, 221, 35);
+/* after this is me messing with the background to see what fits best */
+  position: relative; /*to keep the mole hill in its relative place*/
+  overflow: hidden; /*this will hide the overflow of the mole when going back into molehill*/
+  box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+    inset 0 20px 20px 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgb(165, 85, 11);
+
 }
 
 
 /* Scorekeeper */
 .score {
+  margin-top: 0;
   display: flex;
   justify-content: center;
   padding: 0px;
   border-radius: 1%;
-  margin: 0;
   font-family: "Courier New", Courier, monospace;
   font-size: 40pt;
   font-weight: bold;
-  color: white;
+  color: whitesmoke;
+  /* background-image: url(/chipped_wood.jpg); */
 }
 
 
@@ -41,34 +52,43 @@ p, .timer {
   justify-content: center;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  color:rgb(212, 221, 35);
+  color:whitesmoke;
 }
 
 
 /* new class to edit both buttons at same time */
 .button {
+  position: absolute;
+  top: 28%;
+  left: 47%;
+  border-radius: 20px;
   justify-content: center;
-  display: inline-flex;
-background-color: rgb(57, 35, 221);
-font-size: large;
-color:antiquewhite;
+  /* background-color: rgb(57, 35, 221); */
+  overflow: hidden; /*this will hide the overflow of the mole when going back into molehill*/
+  box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+    inset 0 20px 20px 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: rgb(165, 85, 11);
+  font-size: 27px;
+  color: rgb(212, 221, 35)
 }
 
+/* to get rid of bullet points the buttons had */
 ul {
   list-style-type: none;
 }
 
-/* styling the grid divs as mole holes */
+/* creating the grid 3x3*/
 .moleGrid {
   display: grid;
   grid-template-columns: 105px 105px 105px;
   grid-template-rows: 105px 105px 105px;
   grid-gap: 40px;
   justify-content: center;
-  cursor: url(/mallet1.png), auto;
+  cursor: url(/mallet1.png), auto; 
+  /* added cursor down here so that cursor only appears when we hover over the grid */
 }
 
-/* Styling the mole holes */
+/* used code from youtube video I gave credit to to style the mole holes */
 .hole {
   padding: 10px;
   border-radius: 50%; /*this turns the div squares into circles*/
@@ -79,14 +99,14 @@ ul {
   background-color: rgb(165, 85, 11);
 }
 
-/* Styling the mole images */
+/* making the mole images fit, getting the position correct */
 .hole .moles {
   width: 100%;
   height: 100%;
   object-fit: cover;
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 1;
+  right: -1.9;
   opacity: 0; /* initially hidden */
   transition: opacity 0.3s ease-in-out; /* effect to ease in and out */
 }
@@ -94,4 +114,8 @@ ul {
 /* Add the 'active' class to make the mole visible */
 .hole.active .moles {
   opacity: 100;
+}
+
+.resources {
+font-size: 13px;
 }
