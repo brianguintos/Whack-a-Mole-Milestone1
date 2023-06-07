@@ -4,15 +4,13 @@ body {
   font-size: 25px;
   width: 100%;
   height: 100vh;
-  background-image: url(/grass.jpg);
+  background-image: url(/greenGrass.jpg);
   object-fit:scale-down;
   transform: scale(.75);   /* used this to make everything fit in the page better. Trying to avoid the vertical scroll bar */
 }
 
 /* title of  game */
 .title {
-  /* display: flex;
-  flex-direction: row; */
   justify-content: center;
   padding: 0;
   margin: 0;
@@ -21,9 +19,6 @@ body {
   font-weight: bold;
   text-align: center;
   color: rgb(212, 221, 35);
-/* after this is me messing with the background to see what fits best */
-  position: relative; /*to keep the mole hill in its relative place*/
-  overflow: hidden; /*this will hide the overflow of the mole when going back into molehill*/
   box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
     inset 0 20px 20px 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(165, 85, 11);
@@ -42,7 +37,6 @@ body {
   font-size: 40pt;
   font-weight: bold;
   color: whitesmoke;
-  /* background-image: url(/chipped_wood.jpg); */
 }
 
 
@@ -63,8 +57,7 @@ p, .timer {
   left: 47%;
   border-radius: 20px;
   justify-content: center;
-  /* background-color: rgb(57, 35, 221); */
-  overflow: hidden; /*this will hide the overflow of the mole when going back into molehill*/
+  overflow: hidden;
   box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
     inset 0 20px 20px 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: rgb(165, 85, 11);
