@@ -4,7 +4,7 @@ body {
   font-size: 25px;
   width: 100%;
   height: 100vh;
-  background-image: url(/greenGrass.jpg);
+  background-image: url(/grass.jpg);
   object-fit:scale-down;
   transform: scale(.75);   /* used this to make everything fit in the page better. Trying to avoid the vertical scroll bar */
 }
